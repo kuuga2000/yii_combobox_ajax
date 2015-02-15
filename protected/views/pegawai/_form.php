@@ -75,10 +75,11 @@ $this->avoidDoubleLoadJS();
 			); 
 			$.post($('#<?php echo $modelName;?>-form').attr('action'),$('#<?php echo $modelName;?>-form').serialize(),function(response){ 
 				if(response.success==true){ 
-				$('#<?php echo $modelName;?>-grid').yiiGridView('update', { 
-					data: $(this).serialize() 
-				}); 
-				$("#myModal").modal('hide'); 
+					$('#<?php echo $modelName;?>-form')[0].reset();	
+					$('#<?php echo $modelName;?>-grid').yiiGridView('update', { 
+						data: $(this).serialize() 
+					}); 
+					$("#myModal").modal('hide'); 
 				}else{ 
 					if(response.Pegawai_nama_pegawai){ 
 						$("#Pegawai_nama_pegawai").addClass('error'); 
